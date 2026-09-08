@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A proposed redesign concept for K&K Landscaping Melbourne." />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>K&K Landscaping — Concept by Revora</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --ink: #17231c;
+        --near-black: #101510;
+        --moss: #40563d;
+        --leaf: #95b471;
+        --stone: #e8e6de;
+        --paper: #f5f3ec;
+        --clay: #b66d49;
+        --line: rgba(23, 35, 28, .16);
+        --mono: "DM Mono", monospace;
+        --sans: "Manrope", sans-serif;
+        --serif: "Playfair Display", Georgia, serif;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--paper);
+        font-family: var(--sans);
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: inherit; text-decoration: none; }
+      a:focus-visible { outline: 3px solid var(--leaf); outline-offset: 4px; }
+      .eyebrow { font: 500 .67rem/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; }
+      .shell { width: min(1240px, calc(100% - 48px)); margin: 0 auto; }
+
+      .hero {
+        min-height: 100svh;
+        position: relative;
+        overflow: hidden;
+        color: var(--paper);
+        background: var(--near-black);
+        isolation: isolate;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background: linear-gradient(90deg, rgba(8,13,9,.95) 0%, rgba(8,13,9,.78) 35%, rgba(8,13,9,.15) 71%, rgba(8,13,9,.23) 100%);
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+        background: url("assets/hero-landscape.png") center/cover no-repeat;
+        transform: scale(1.075);
+        animation: image-settle 1.8s cubic-bezier(.2,.8,.2,1) .05s forwards;
+      }
+      .grain {
+        pointer-events: none;
+        position: absolute;
+        inset: 0;
+        opacity: .12;
+        z-index: 2;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.65'/%3E%3C/svg%3E");
+      }
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 24px 0;
+        position: relative;
+        z-index: 4;
+        border-bottom: 1px solid rgba(245,243,236,.18);
+        animation: nav-enter .9s ease both;
+      }
+      .brand { display: inline-flex; align-items: center; gap: 11px; font-size: .8rem; font-weight: 700; letter-spacing: .085em; }
+      .brand-mark { width: 29px; height: 29px; display: grid; place-items: center; border: 1px solid rgba(245,243,236,.7); border-radius: 50%; font: .56rem var(--mono); }
+      .nav-links { display: flex; align-items: center; gap: 26px; font-size: .76rem; font-weight: 600; }
+      .nav-links a:not(.nav-cta) { opacity: .78; transition: opacity .2s ease; }
+      .nav-links a:not(.nav-cta):hover { opacity: 1; }
+      .nav-cta { border-bottom: 1px solid var(--leaf); padding-bottom: 4px; }
+
+      .hero-copy {
+        display: grid;
+        min-height: calc(100svh - 78px);
+        align-content: center;
+        padding: 12vh 0 9vh;
+        max-width: 760px;
+      }
+      .hero-kicker { color: var(--leaf); margin-bottom: 25px; animation: up .8s .15s both; }
+      h1 {
+        margin: 0;
+        font-size: clamp(3.4rem, 8.1vw, 7.5rem);
+        line-height: .91;
+        letter-spacing: -.075em;
+        max-width: 800px;
+        font-weight: 700;
+        animation: up 1s .25s both;
+      }
+      h1 em { font-family: var(--serif); font-weight: 500; letter-spacing: -.07em; }
+      .hero-desc {
+        margin: 31px 0 0;
+        max-width: 450px;
+        font-size: 1rem;
+        line-height: 1.65;
+        color: rgba(245,243,236,.77);
+        animation: up .8s .47s both;
+      }
+      .hero-actions { display: flex; gap: 14px; margin-top: 36px; animation: up .8s .58s both; }
+      .button { display: inline-flex; align-items: center; gap: 20px; padding: 15px 18px; font-size: .76rem; font-weight: 700; transition: transform .25s ease, background .25s ease; }
+      .button:hover { transform: translateY(-3px); }
+      .button.dark { background: var(--leaf); color: var(--near-black); }
+      .button.ghost { border: 1px solid rgba(245,243,236,.36); color: var(--paper); }
+      .hero-meta { position: absolute; bottom: 27px; left: max(24px, calc((100vw - 1240px) / 2)); right: max(24px, calc((100vw - 1240px) / 2)); display: flex; justify-content: space-between; z-index: 3; color: rgba(245,243,236,.65); animation: up .9s .7s both; }
+      .hero-meta span:last-child { display: flex; gap: 10px; align-items: center; }
+      .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--leaf); box-shadow: 0 0 0 0 rgba(149,180,113,.5); animation: pulse 2.5s infinite; }
+
+      .strip { overflow: hidden; padding: 17px 0; background: var(--leaf); color: var(--near-black); }
+      .ticker { display: flex; width: max-content; gap: 28px; white-space: nowrap; animation: ticker 24s linear infinite; font: 500 .69rem var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+      .ticker span::after { content: "✳"; padding-left: 28px; }
+
+      section { padding: clamp(85px, 12vw, 170px) 0; }
+      .intro-grid { display: grid; grid-template-columns: 1fr 1.48fr; gap: clamp(35px, 10vw, 150px); align-items: start; }
+      .section-no { color: var(--clay); }
+      .intro-grid h2, .headline-block h2 { margin: 0; font-size: clamp(2.4rem, 5vw, 4.8rem); line-height: 1.01; letter-spacing: -.06em; font-weight: 700; }
+      .intro-grid h2 em, .headline-block h2 em { font-family: var(--serif); font-weight: 500; }
+      .intro-grid p { margin: 31px 0 0; max-width: 570px; font-size: 1.1rem; line-height: 1.75; }
+      .intro-grid p + p { margin-top: 19px; color: #617066; font-size: .92rem; }
+
+      .services { background: var(--ink); color: var(--paper); padding-bottom: 0; overflow: hidden; }
+      .section-header { display: flex; justify-content: space-between; align-items: end; margin-bottom: 52px; }
+      .section-header h2 { margin: 11px 0 0; font-size: clamp(2.4rem, 5.5vw, 5.3rem); line-height: .93; letter-spacing: -.07em; }
+      .section-header h2 em { font-family: var(--serif); font-weight: 500; }
+      .section-header p { max-width: 275px; margin: 0; color: rgba(245,243,236,.65); font-size: .84rem; line-height: 1.6; }
+      .service-list { border-top: 1px solid rgba(245,243,236,.23); }
+      .service-row { display: grid; grid-template-columns: 85px 1.3fr 1fr auto; align-items: center; gap: 20px; padding: 29px 0; border-bottom: 1px solid rgba(245,243,236,.23); transition: color .3s ease, padding .3s ease; }
+      .service-row:hover { color: var(--leaf); padding-left: 14px; }
+      .service-row .num { font: .68rem var(--mono); color: var(--leaf); }
+      .service-row h3 { margin: 0; font-size: clamp(1.2rem, 2vw, 1.8rem); letter-spacing: -.045em; }
+      .service-row p { margin: 0; color: rgba(245,243,236,.65); font-size: .79rem; line-height: 1.55; }
+      .arrow { font-size: 1.4rem; transition: transform .3s ease; }
+      .service-row:hover .arrow { transform: translateX(8px); }
+      .services .shell { padding-bottom: clamp(85px, 12vw, 145px); }
+
+      .project-banner { position: relative; min-height: min(72vw, 720px); display: grid; align-items: end; padding: clamp(24px, 4vw, 55px); overflow: hidden; color: var(--paper); background: #384837; }
+      .project-banner::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(11,18,12,.05) 32%, rgba(11,18,12,.78)); }
+      .project-banner::after { content: ""; position: absolute; inset: 0; opacity: .22; background: linear-gradient(130deg, transparent 45%, rgba(149,180,113,.55)); mix-blend-mode: screen; }
+      .project-copy { position: relative; z-index: 1; max-width: 730px; }
+      .project-copy h2 { margin: 10px 0 0; font-size: clamp(2.6rem, 6vw, 6rem); line-height: .92; letter-spacing: -.07em; }
+      .project-copy p { margin: 22px 0 0; max-width: 420px; color: rgba(245,243,236,.78); font-size: .9rem; line-height: 1.65; }
+      .project-copy .eyebrow { color: var(--leaf); }
+      .project-lines { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+      .project-lines i { position: absolute; display: block; width: 1px; height: 145%; top: -20%; background: rgba(245,243,236,.19); transform: rotate(31deg); animation: draw-line 1.5s ease both; }
+      .project-lines i:nth-child(1) { left: 28%; animation-delay: .1s; } .project-lines i:nth-child(2) { left: 49%; animation-delay: .22s; } .project-lines i:nth-child(3) { left: 72%; animation-delay: .34s; }
+
+      .process { background: #d7ddd1; }
+      .headline-block { max-width: 800px; }
+      .headline-block .eyebrow { margin-bottom: 18px; color: var(--moss); }
+      .process-grid { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 70px; border-top: 1px solid var(--line); }
+      .process-step { padding: 26px 28px 0 0; min-height: 225px; border-right: 1px solid var(--line); }
+      .process-step:not(:first-child) { padding-left: 28px; }
+      .process-step:last-child { border: 0; }
+      .process-step span { color: var(--clay); font: .68rem var(--mono); }
+      .process-step h3 { margin: 50px 0 10px; font-size: 1.38rem; letter-spacing: -.04em; }
+      .process-step p { margin: 0; max-width: 255px; color: #4e5d52; font-size: .82rem; line-height: 1.6; }
+
+      .closing { background: var(--near-black); color: var(--paper); position: relative; overflow: hidden; }
+      .closing::after { content: "K&K"; position: absolute; right: -4vw; bottom: -12vw; font-size: 29vw; line-height: .7; letter-spacing: -.13em; color: rgba(149,180,113,.08); font-weight: 800; }
+      .closing-inner { position: relative; z-index: 1; }
+      .closing h2 { margin: 17px 0 32px; max-width: 830px; font-size: clamp(3.1rem, 7vw, 7rem); line-height: .9; letter-spacing: -.075em; }
+      .closing h2 em { font-family: var(--serif); font-weight: 500; }
+      .closing .eyebrow { color: var(--leaf); }
+      .concept-note { display: flex; gap: 11px; align-items: flex-start; max-width: 620px; margin-top: 50px; color: rgba(245,243,236,.58); font-size: .72rem; line-height: 1.6; }
+      .concept-note b { color: var(--leaf); font-size: .84rem; }
+      footer { display: flex; justify-content: space-between; padding: 25px 0; border-top: 1px solid rgba(245,243,236,.18); color: rgba(245,243,236,.48); font: .64rem var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+
+      .reveal { opacity: 0; transform: translateY(28px); transition: opacity .75s ease, transform .75s cubic-bezier(.2,.7,.2,1); }
+      .reveal.visible { opacity: 1; transform: none; }
+      @keyframes nav-enter { from { opacity: 0; transform: translateY(-15px); } to { opacity: 1; transform: none; } }
+      @keyframes up { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+      @keyframes image-settle { to { transform: scale(1); } }
+      @keyframes ticker { to { transform: translateX(-50%); } }
+      @keyframes pulse { 70% { box-shadow: 0 0 0 9px rgba(149,180,113,0); } 100% { box-shadow: 0 0 0 0 rgba(149,180,113,0); } }
+      @keyframes draw-line { from { transform: rotate(31deg) translateY(-100%); } to { transform: rotate(31deg) translateY(0); } }
+
+      @media (max-width: 760px) {
+        .shell { width: min(100% - 32px, 1240px); }
+        .nav-links a:not(.nav-cta) { display: none; }
+        .hero-copy { padding-top: 18vh; padding-bottom: 19vh; }
+        .hero::before { background: linear-gradient(180deg, rgba(8,13,9,.72), rgba(8,13,9,.86) 74%, rgba(8,13,9,.98)); }
+        .hero::after { background-position: 61% center; }
+        .hero-meta { align-items: flex-end; font-size: .6rem; }
+        .intro-grid, .section-header { display: block; }
+        .intro-grid h2 { margin-top: 33px; }
+        .section-header p { margin-top: 26px; }
+        .service-row { grid-template-columns: 40px 1fr auto; gap: 12px; }
+        .service-row p { display: none; }
+        .project-banner { min-height: 110vw; }
+        .process-grid { grid-template-columns: 1fr; margin-top: 46px; }
+        .process-step, .process-step:not(:first-child) { min-height: auto; padding: 25px 0 30px; border-right: 0; border-bottom: 1px solid var(--line); }
+        .process-step h3 { margin-top: 31px; }
+        footer { gap: 12px; flex-direction: column; }
+      }
+      @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+    </style>
+  </head>
+  <body>
+    <header class="hero" id="top">
+      <div class="grain"></div>
+      <div class="shell">
+        <nav aria-label="Primary navigation">
+          <a class="brand" href="#top" aria-label="K and K Landscaping concept home"><span class="brand-mark">K&K</span><span>LANDSCAPING</span></a>
+          <div class="nav-links"><a href="#services">Services</a><a href="#approach">Approach</a><a href="#start" class="nav-cta">Start a project ↗</a></div>
+        </nav>
+        <div class="hero-copy">
+          <p class="hero-kicker eyebrow">Landscape construction · Melbourne</p>
+          <h1>Outdoor spaces,<br /><em>made to belong.</em></h1>
+          <p class="hero-desc">Considered landscapes for the way you live, gather and come home—designed with intent and built to last.</p>
+          <div class="hero-actions"><a class="button dark" href="#start">Begin the conversation <span>↗</span></a><a class="button ghost" href="#services">Explore the work <span>↓</span></a></div>
+        </div>
+      </div>
+      <div class="hero-meta eyebrow"><span>Design · Construct · Enjoy</span><span><i class="dot"></i> Melbourne, Victoria</span></div>
+    </header>
+
+    <div class="strip" aria-hidden="true"><div class="ticker"><span>Landscapes with presence</span><span>Built around living</span><span>Details that hold up</span><span>Landscapes with presence</span><span>Built around living</span><span>Details that hold up</span></div></div>
+
+    <main>
+      <section>
+        <div class="shell intro-grid reveal">
+          <p class="section-no eyebrow">01 / The right starting point</p>
+          <div><h2>Every good space begins with a <em>clear idea.</em></h2><p>Your outdoor area should feel like a natural extension of the way you live. The best result comes from listening first—then bringing shape, material, planting and function into one considered whole.</p><p>This concept is built around the landscape-construction services K&K Landscaping publicly describes: construction, decking, paving, irrigation, planting, drainage and retaining walls.</p></div>
+        </div>
+      </section>
+
+      <section class="services" id="services">
+        <div class="shell">
+          <div class="section-header reveal"><div><p class="eyebrow" style="color:var(--leaf)">02 / Selected services</p><h2>Built for the <em>whole picture.</em></h2></div><p>A clear, project-led way to present the work clients are already looking for.</p></div>
+          <div class="service-list reveal">
+            <a class="service-row" href="#approach"><span class="num">01</span><h3>Landscape construction</h3><p>Purposeful outdoor spaces from first layout through to the final finish.</p><span class="arrow">↗</span></a>
+            <a class="service-row" href="#approach"><span class="num">02</span><h3>Paving &amp; decking</h3><p>Ground-level material choices that make an outdoor area feel complete.</p><span class="arrow">↗</span></a>
+            <a class="service-row" href="#approach"><span class="num">03</span><h3>Planting &amp; turf</h3><p>Layered greenery that gives the build softness, movement and life.</p><span class="arrow">↗</span></a>
+            <a class="service-row" href="#approach"><span class="num">04</span><h3>Walls, drainage &amp; detail</h3><p>Technical elements resolved with care, so the space works beautifully.</p><span class="arrow">↗</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="project-banner" aria-label="A concept image of a completed landscape project">
+        <div class="project-lines"><i></i><i></i><i></i></div>
+        <div class="project-copy reveal"><p class="eyebrow">A more useful portfolio</p><h2>Show the work.<br />Let it speak.</h2><p>Stronger project imagery, clearly explained services and a straightforward enquiry path give prospective clients a reason to stay—and a clearer reason to get in touch.</p></div>
+      </section>
+
+      <section class="process" id="approach">
+        <div class="shell">
+          <div class="headline-block reveal"><p class="eyebrow">03 / A considered process</p><h2>Less guesswork.<br /><em>More clarity.</em></h2></div>
+          <div class="process-grid reveal">
+            <article class="process-step"><span>01</span><h3>Understand the space</h3><p>Start with how the area is used, what matters most, and where it needs to work harder.</p></article>
+            <article class="process-step"><span>02</span><h3>Shape the direction</h3><p>Bring together practical planning, material choices and the details that make the design feel right.</p></article>
+            <article class="process-step"><span>03</span><h3>Build the lasting part</h3><p>Turn the idea into an outdoor space that feels resolved from every angle.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="closing" id="start">
+        <div class="shell closing-inner reveal">
+          <p class="eyebrow">K&amp;K Landscaping</p>
+          <h2>Make more of the <em>space you have.</em></h2>
+          <a class="button dark" href="#top">Back to top <span>↑</span></a>
+          <p class="concept-note"><b>✦</b><span>This is a proposed redesign concept prepared by Revora. It is not the official K&amp;K Landscaping website and contains no live enquiry form.</span></p>
+          <footer><span>Concept redesign by Revora</span><span>Landscape construction · Melbourne</span></footer>
+        </div>
+      </section>
+    </main>
+    <script>
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+      }, { threshold: 0.13 });
+      document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
+    </script>
+  </body>
+</html>
